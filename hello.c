@@ -323,37 +323,6 @@ int CountNeighbors(UINT64 *grid, int x, int y)
     return count;
 }
 
-/** ostanki printgrid debuga
-void PrintGrid(EFI_SYSTEM_TABLE* ST, UINT64* grid, UINT8 Sx, UINT8 Sy) {
-    UINT16 rowBuffer[66]; // 64 chars + \r + \0
-    rowBuffer[64] = L'\r'; // Return to start of line
-    rowBuffer[65] = 0;     // Null terminator
-
-    // 1. Move cursor to 0,0 (Top Left)
-    ST->ConOut->SetCursorPosition(ST->ConOut, 0, 0);
-
-    for (UINT8 y = 0; y < 64; y++) {
-        for (UINT8 x = 0; x < 64; x++) {
-            // Check our bitgrid
-            if ((grid[y] >> x) & 1) { // na x-ti poziciji primerja z 1
-                rowBuffer[x] = L'#'; // Filled cell
-            } else {
-                rowBuffer[x] = L' '; // Empty cell (looks cleaner than '.')
-            }
-            if(y==Sy && x== Sx) {rowBuffer[x] = L'S';}
-        }
-
-
-        // 2. Print the entire row at once
-        ST->ConOut->OutputString(ST->ConOut, rowBuffer);
-
-        // 3. Move to the next line
-        if (y < 63) {
-            ST->ConOut->OutputString(ST->ConOut, L"\n");
-        }
-    }
-}
-*/
 
 void DrawRect(UINT32 *fb, UINT32 PSL, UINT32 x, UINT32 y, UINT32 width, UINT32 height, UINT32 color)
 {
